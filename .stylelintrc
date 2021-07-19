@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-config-recommended", 
+  "stylelint-config-styled-components"],
+  "ignoreFiles": ["/webpack/*.js", "/dist", ".eslintrc.js"],
+  "rules": {
+    "indentation": [
+      2,
+      {
+        "severity": "warning"
+      }
+    ],
+    "no-duplicate-selectors": null
+  }
+}
