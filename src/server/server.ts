@@ -48,13 +48,17 @@ app.get('/api/homePage', async (_req: Request, res: Response) => {
     console.log(e);
   }
 
-  res.json(
-    JSON.stringify({
-      data: {
-        number: data?.number,
-      },
-    })
-  );
+  if (data) {
+    res.json(
+      JSON.stringify({
+        data: {
+          number: data.number,
+        },
+      })
+    );
+  } else {
+    res.statusCode = 500;
+  }
 });
 
 app.listen(port, () => {

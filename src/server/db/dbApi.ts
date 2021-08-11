@@ -5,8 +5,12 @@ export interface IDocument {
   number: number;
 }
 
-export async function readNumber(): Promise<IDocument> {
+export async function readNumber(): Promise<IDocument | undefined> {
   const client = getClient();
+  if (!client) {
+    return undefined;
+  }
+
   try {
     await client.connect();
     const database = client.db(db_name);
@@ -23,6 +27,10 @@ export async function readNumber(): Promise<IDocument> {
 
 export async function replaceNumber(number: number): Promise<void> {
   const client = getClient();
+  if (!client) {
+    return;
+  }
+
   try {
     await client.connect();
     const database = client.db(db_name);
